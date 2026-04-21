@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Taksins — Taksin Syndicate | LPG Energy Group Thailand</title>
+  <meta name="description" content="Taksin Syndicate operates Thailand's integrated LPG energy group — from filling and logistics to retail propane gas distribution."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black: #080808;
+      --dark: #111111;
+      --card: #161616;
+      --border: rgba(255,255,255,0.08);
+      --text: #f0f0f0;
+      --muted: #777;
+      --accent: #F09A2A;
+      --accent-dim: rgba(240,154,42,0.12);
+      --blue: #3B8FD4;
+      --green: #3D9B5C;
+      --font-display: 'Bebas Neue', sans-serif;
+      --font-body: 'DM Sans', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--black);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 48px;
+      height: 64px;
+      background: rgba(8,8,8,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      font-family: var(--font-display);
+      font-size: 28px;
+      letter-spacing: 2px;
+      color: #fff;
+    }
+    .nav-logo .dot { color: var(--accent); }
+    .nav-links { display: flex; gap: 32px; }
+    .nav-links a {
+      font-size: 13px;
+      color: var(--muted);
+      text-decoration: none;
+      letter-spacing: 0.5px;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: #fff; }
+    .nav-cta {
+      background: var(--accent);
+      color: #000;
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-weight: 500;
+      padding: 9px 20px;
+      border-radius: 4px;
+      border: none;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+    .nav-cta:hover { opacity: 0.88; }
+
+    /* ─── HERO ─── */
+    #home {
+      min-height: 100vh;
+      padding: 120px 48px 80px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* subtle grid texture */
+    #home::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(var(--border) 1px, transparent 1px),
+        linear-gradient(90deg, var(--border) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+    }
+
+    /* amber glow orb */
+    #home::after {
+      content: '';
+      position: absolute;
+      top: -120px; left: -80px;
+      width: 640px; height: 640px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(240,154,42,0.14) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-tag {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--accent-dim);
+      border: 1px solid rgba(240,154,42,0.3);
+      color: var(--accent);
+      font-size: 12px;
+      letter-spacing: 2px;
+      padding: 6px 14px;
+      border-radius: 2px;
+      margin-bottom: 28px;
+      width: fit-content;
+    }
+    .hero-tag::before {
+      content: '';
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(56px, 9vw, 108px);
+      line-height: 0.95;
+      letter-spacing: 2px;
+      color: #fff;
+      margin-bottom: 28px;
+      position: relative;
+    }
+    .hero h1 .accent { color: var(--accent); }
+    .hero h1 .outline {
+      -webkit-text-stroke: 1px rgba(255,255,255,0.3);
+      color: transparent;
+    }
+
+    .hero-sub {
+      font-size: 16px;
+      color: var(--muted);
+      max-width: 500px;
+      line-height: 1.75;
+      margin-bottom: 40px;
+    }
+
+    .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 64px; }
+    .btn-primary {
+      background: var(--accent);
+      color: #000;
+      font-weight: 500;
+      font-size: 14px;
+      padding: 13px 28px;
+      border-radius: 4px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex; align-items: center; gap: 8px;
+      transition: opacity 0.2s, transform 0.15s;
+    }
+    .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
+    .btn-outline {
+      background: transparent;
+      color: var(--text);
+      font-size: 14px;
+      padding: 13px 28px;
+      border-radius: 4px;
+      border: 1px solid rgba(255,255,255,0.15);
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex; align-items: center; gap: 8px;
+      transition: border-color 0.2s;
+    }
+    .btn-outline:hover { border-color: rgba(255,255,255,0.35); }
+
+    .hero-stats {
+      display: flex; gap: 48px;
+      padding-top: 40px;
+      border-top: 1px solid var(--border);
+    }
+    .stat-num {
+      font-family: var(--font-display);
+      font-size: 36px;
+      color: #fff;
+      letter-spacing: 1px;
+    }
+    .stat-label {
+      font-size: 12px;
+      color: var(--muted);
+      letter-spacing: 0.5px;
+    }
+
+    /* ─── SECTION BASE ─── */
+    section { padding: 96px 48px; }
+    .section-eyebrow {
+      font-size: 11px;
+      letter-spacing: 3px;
+      color: var(--accent);
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(36px, 5vw, 56px);
+      letter-spacing: 1px;
+      line-height: 1.0;
+      color: #fff;
+      margin-bottom: 16px;
+    }
+    .section-sub {
+      font-size: 15px;
+      color: var(--muted);
+      max-width: 480px;
+      margin-bottom: 48px;
+      line-height: 1.75;
+    }
+
+    /* ─── COMPANIES ─── */
+    #companies { background: var(--dark); }
+    .companies-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      margin-top: 48px;
+    }
+    .company-card {
+      background: var(--card);
+      padding: 36px 32px;
+      position: relative;
+      overflow: hidden;
+      transition: background 0.2s;
+    }
+    .company-card:hover { background: #1c1c1c; }
+    .company-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+    }
+    .card-lpg::before { background: var(--accent); }
+    .card-rcl::before { background: var(--blue); }
+    .card-tpg::before { background: var(--green); }
+
+    .company-abbr {
+      font-family: var(--font-display);
+      font-size: 48px;
+      letter-spacing: 2px;
+      margin-bottom: 4px;
+    }
+    .lpg-color { color: var(--accent); }
+    .rcl-color { color: var(--blue); }
+    .tpg-color { color: var(--green); }
+
+    .company-full {
+      font-size: 12px;
+      color: var(--muted);
+      letter-spacing: 0.5px;
+      margin-bottom: 20px;
+    }
+    .company-card h3 {
+      font-size: 18px;
+      font-weight: 500;
+      margin-bottom: 10px;
+    }
+    .company-card p {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+    .company-tag {
+      display: inline-block;
+      font-size: 10px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 2px;
+      margin-top: 20px;
+    }
+    .tag-lpg { background: var(--accent-dim); color: var(--accent); }
+    .tag-rcl { background: rgba(59,143,212,0.1); color: var(--blue); }
+    .tag-tpg { background: rgba(61,155,92,0.1); color: var(--green); }
+
+    /* ─── SERVICES ─── */
+    #services { background: var(--black); }
+    .services-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.8fr;
+      gap: 80px;
+      align-items: start;
+    }
+    .svc-list { display: flex; flex-direction: column; gap: 0; }
+    .svc-item {
+      padding: 28px 0;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 24px;
+      cursor: default;
+      transition: padding-left 0.2s;
+    }
+    .svc-item:hover { padding-left: 8px; }
+    .svc-item:first-child { border-top: 1px solid var(--border); }
+    .svc-num { font-size: 11px; color: var(--muted); padding-top: 4px; min-width: 24px; }
+    .svc-content { flex: 1; }
+    .svc-content h4 { font-size: 16px; font-weight: 500; margin-bottom: 6px; }
+    .svc-content p { font-size: 13px; color: var(--muted); line-height: 1.7; }
+    .svc-arrow { color: var(--muted); font-size: 18px; padding-top: 2px; }
+
+    .svc-visual {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 36px;
+      position: sticky;
+      top: 84px;
+    }
+    .svc-visual-title {
+      font-family: var(--font-display);
+      font-size: 22px;
+      letter-spacing: 1px;
+      color: var(--accent);
+      margin-bottom: 24px;
+    }
+    .flow-step {
+      display: flex; align-items: center; gap: 16px;
+      margin-bottom: 8px;
+    }
+    .flow-dot {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 13px; font-weight: 500;
+      flex-shrink: 0;
+    }
+    .flow-dot.amber { background: var(--accent-dim); color: var(--accent); border: 1px solid rgba(240,154,42,0.3); }
+    .flow-dot.blue { background: rgba(59,143,212,0.1); color: var(--blue); border: 1px solid rgba(59,143,212,0.3); }
+    .flow-dot.green { background: rgba(61,155,92,0.1); color: var(--green); border: 1px solid rgba(61,155,92,0.3); }
+    .flow-line {
+      width: 36px; height: 20px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .flow-line::after {
+      content: '';
+      width: 1px; height: 100%;
+      background: var(--border);
+      margin-left: 17px;
+      display: block;
+    }
+    .flow-text h5 { font-size: 13px; font-weight: 500; }
+    .flow-text span { font-size: 12px; color: var(--muted); }
+
+    /* ─── ABOUT ─── */
+    #about { background: var(--dark); }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+    .about-text p {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.85;
+      margin-bottom: 20px;
+    }
+    .about-text p strong { color: var(--text); font-weight: 500; }
+    .values-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .value-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 20px;
+    }
+    .value-icon {
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+    .value-card h4 { font-size: 14px; font-weight: 500; margin-bottom: 6px; }
+    .value-card p { font-size: 12px; color: var(--muted); line-height: 1.6; }
+
+    /* ─── CONTACT ─── */
+    #contact { background: var(--black); }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+    .contact-info p {
+      font-size: 15px;
+      color: var(--muted);
+      margin-bottom: 36px;
+      line-height: 1.75;
+    }
+    .contact-detail {
+      display: flex; gap: 16px; align-items: flex-start;
+      margin-bottom: 20px;
+    }
+    .contact-detail-label {
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      min-width: 80px;
+      padding-top: 2px;
+    }
+    .contact-detail-val {
+      font-size: 14px;
+      color: var(--text);
+    }
+    .contact-form { display: flex; flex-direction: column; gap: 16px; }
+    .form-group { display: flex; flex-direction: column; gap: 8px; }
+    .form-group label { font-size: 12px; color: var(--muted); letter-spacing: 0.5px; }
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 11px 14px;
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 14px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus { border-color: var(--accent); }
+    .form-group textarea { resize: vertical; min-height: 120px; }
+    .form-group select option { background: var(--dark); }
+    .form-submit {
+      background: var(--accent);
+      color: #000;
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 500;
+      padding: 14px 28px;
+      border-radius: 4px;
+      border: none;
+      cursor: pointer;
+      transition: opacity 0.2s;
+      margin-top: 8px;
+    }
+    .form-submit:hover { opacity: 0.88; }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--dark);
+      border-top: 1px solid var(--border);
+      padding: 40px 48px;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      gap: 24px;
+    }
+    .footer-logo {
+      font-family: var(--font-display);
+      font-size: 24px;
+      letter-spacing: 2px;
+      color: #fff;
+    }
+    .footer-logo .dot { color: var(--accent); }
+    .footer-nav { display: flex; gap: 24px; justify-content: center; }
+    .footer-nav a { font-size: 12px; color: var(--muted); text-decoration: none; }
+    .footer-nav a:hover { color: #fff; }
+    .footer-copy { font-size: 12px; color: var(--muted); text-align: right; }
+
+    /* ─── DIVIDER ─── */
+    .divider {
+      height: 1px;
+      background: var(--border);
+      margin: 0 48px;
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 900px) {
+      nav { padding: 0 24px; }
+      .nav-links { display: none; }
+      section { padding: 64px 24px; }
+      #home { padding: 100px 24px 60px; }
+      .companies-grid { grid-template-columns: 1fr; gap: 2px; }
+      .services-layout { grid-template-columns: 1fr; }
+      .svc-visual { position: static; }
+      .about-grid { grid-template-columns: 1fr; gap: 40px; }
+      .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+      footer { grid-template-columns: 1fr; text-align: center; }
+      .footer-copy { text-align: center; }
+      .hero-stats { gap: 28px; flex-wrap: wrap; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-logo">TAKSINS<span class="dot">.</span></div>
+    <div class="nav-links">
+      <a href="#home">Home</a>
+      <a href="#companies">Companies</a>
+      <a href="#services">Services</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <a href="#contact" class="nav-cta">Get in touch</a>
+  </nav>
+
+  <!-- HERO -->
+  <section id="home">
+    <div class="hero-tag">Thailand's Integrated LPG Energy Group</div>
+    <h1 class="hero">
+      POWERING<br>
+      <span class="accent">THAILAND</span><br>
+      <span class="outline">WITH ENERGY</span>
+    </h1>
+    <p class="hero-sub">
+      Taksin Syndicate operates across the full LPG energy chain — from mini-factory filling and nationwide logistics to retail propane distribution. One group, three companies, zero compromises.
+    </p>
+    <div class="hero-btns">
+      <a href="#companies" class="btn-primary">Our Companies →</a>
+      <a href="#contact" class="btn-outline">Contact Us</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="stat-num">3</div>
+        <div class="stat-label">Group companies</div>
+      </div>
+      <div>
+        <div class="stat-num">TH</div>
+        <div class="stat-label">Nationwide delivery</div>
+      </div>
+      <div>
+        <div class="stat-num">LPG</div>
+        <div class="stat-label">Core energy focus</div>
+      </div>
+      <div>
+        <div class="stat-num">B2B+</div>
+        <div class="stat-label">Business &amp; retail</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPANIES -->
+  <section id="companies">
+    <div class="section-eyebrow">Our group</div>
+    <div class="section-title">Three companies,<br>one syndicate</div>
+    <p class="section-sub">Each entity serves a distinct role — together they form a vertically integrated LPG energy operation across Thailand.</p>
+
+    <div class="companies-grid">
+      <div class="company-card card-lpg">
+        <div class="company-abbr lpg-color">LPG</div>
+        <div class="company-full">TAKSIN LPG CO., LTD.</div>
+        <h3>LPG Filling Factory</h3>
+        <p>
+          Our mini LPG propane filling factory is the production core of the syndicate. Operating with certified safety standards, Taksin LPG fills cylinders for business distributors and residential supply chains across the Chanthaburi region and beyond.
+        </p>
+        <div class="company-tag tag-lpg">Production</div>
+      </div>
+
+      <div class="company-card card-rcl">
+        <div class="company-abbr rcl-color">RCL</div>
+        <div class="company-full">ROYAL CHANTHABURI LOGISTICS CO., LTD.</div>
+        <h3>LPG Transportation</h3>
+        <p>
+          Royal Chanthaburi Logistics operates a dedicated LPG transport fleet covering all of Thailand. From filling plant to final distributor, RCL ensures safe, compliant, and on-time delivery for every load — making us the backbone of the syndicate's supply chain.
+        </p>
+        <div class="company-tag tag-rcl">Logistics</div>
+      </div>
+
+      <div class="company-card card-tpg">
+        <div class="company-abbr tpg-color">TPG</div>
+        <div class="company-full">TAKSIN PROPANE GAS CO., LTD.</div>
+        <h3>Retail Propane Gas</h3>
+        <p>
+          TPG is our newest and fastest-growing arm — built to seize local LPG retail market share in targeted areas. By providing quality propane gas directly to households and small businesses, TPG is capturing a market ripe for a more reliable, better-branded energy supplier.
+        </p>
+        <div class="company-tag tag-tpg">Retail</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="services-layout">
+      <div>
+        <div class="section-eyebrow">What we do</div>
+        <div class="section-title">Full-chain<br>energy services</div>
+        <p class="section-sub">We operate across every stage of the LPG value chain — making us one of the most integrated energy groups in the region.</p>
+
+        <div class="svc-list">
+          <div class="svc-item">
+            <div class="svc-num">01</div>
+            <div class="svc-content">
+              <h4>LPG Cylinder Filling</h4>
+              <p>High-capacity mini factory operations. We fill propane cylinders of various sizes to spec, with consistent quality and full safety compliance.</p>
+            </div>
+            <div class="svc-arrow">→</div>
+          </div>
+          <div class="svc-item">
+            <div class="svc-num">02</div>
+            <div class="svc-content">
+              <h4>Nationwide LPG Transport</h4>
+              <p>RCL fleet covers all Thai provinces. We transport LPG from filling stations to distributors and end clients safely and on schedule.</p>
+            </div>
+            <div class="svc-arrow">→</div>
+          </div>
+          <div class="svc-item">
+            <div class="svc-num">03</div>
+            <div class="svc-content">
+              <h4>Retail Propane Distribution</h4>
+              <p>TPG operates retail-facing distribution in targeted local markets — supplying households, restaurants, and small businesses directly.</p>
+            </div>
+            <div class="svc-arrow">→</div>
+          </div>
+          <div class="svc-item">
+            <div class="svc-num">04</div>
+            <div class="svc-content">
+              <h4>B2B Bulk LPG Supply</h4>
+              <p>Large-volume contracts for factories, food manufacturers, and commercial clients requiring consistent, reliable LPG supply with flexible scheduling.</p>
+            </div>
+            <div class="svc-arrow">→</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="svc-visual">
+        <div class="svc-visual-title">HOW IT WORKS</div>
+        <div class="flow-step">
+          <div class="flow-dot amber">1</div>
+          <div class="flow-text">
+            <h5>Taksin LPG fills cylinders</h5>
+            <span>Mini factory — Chanthaburi</span>
+          </div>
+        </div>
+        <div class="flow-line"></div>
+        <div class="flow-step">
+          <div class="flow-dot blue">2</div>
+          <div class="flow-text">
+            <h5>RCL transports nationwide</h5>
+            <span>Full fleet — all provinces</span>
+          </div>
+        </div>
+        <div class="flow-line"></div>
+        <div class="flow-step">
+          <div class="flow-dot green">3</div>
+          <div class="flow-text">
+            <h5>TPG delivers to end users</h5>
+            <span>Retail shops &amp; households</span>
+          </div>
+        </div>
+        <div style="margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--border);">
+          <p style="font-size: 13px; color: var(--muted); line-height: 1.7;">
+            The result: a fully integrated chain where quality is controlled from production to delivery — with no dependency on third-party logistics or external filling.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="about-grid">
+      <div class="about-text">
+        <div class="section-eyebrow">About us</div>
+        <div class="section-title">The Taksin<br>Syndicate story</div>
+        <p>
+          <strong>Taksin Syndicate</strong> was founded on a simple idea: that Thailand's LPG energy market was fragmented, unreliable, and ripe for a better-run operator. Starting with a mini LPG filling factory in the Chanthaburi region, we built our capacity from the ground up.
+        </p>
+        <p>
+          Recognizing that production alone wasn't enough, we established <strong>Royal Chanthaburi Logistics (RCL)</strong> to take direct control of our distribution — ensuring our gas reached clients safely and on time, anywhere in Thailand.
+        </p>
+        <p>
+          The most recent chapter is <strong>Taksin Propane Gas (TPG)</strong> — our push into the retail market. With a strong production and logistics base already in place, TPG is positioned to offer local LPG shops and end consumers a more reliable and competitive alternative to incumbent suppliers.
+        </p>
+        <p>
+          Today, Taksin Syndicate operates as one of the region's most self-sufficient LPG energy groups — and we're just getting started.
+        </p>
+      </div>
+
+      <div>
+        <div class="values-grid">
+          <div class="value-card">
+            <div class="value-icon">⚡</div>
+            <h4>Reliability</h4>
+            <p>Our clients count on consistent supply. We've built every part of our operation to deliver without fail.</p>
+          </div>
+          <div class="value-card">
+            <div class="value-icon">🔒</div>
+            <h4>Safety first</h4>
+            <p>LPG demands rigorous safety standards. All operations comply with Thai industrial and hazmat regulations.</p>
+          </div>
+          <div class="value-card">
+            <div class="value-icon">🌐</div>
+            <h4>National reach</h4>
+            <p>From Chanthaburi to the north — RCL's logistics network covers every province in Thailand.</p>
+          </div>
+          <div class="value-card">
+            <div class="value-icon">📈</div>
+            <h4>Growth-oriented</h4>
+            <p>TPG represents our ambition — seizing new market share and expanding the syndicate's footprint.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="section-eyebrow">Contact</div>
+        <div class="section-title">Let's talk<br>energy</div>
+        <p>
+          Whether you're a business looking for bulk LPG supply, a logistics partner, or a retail distributor — we'd like to hear from you.
+        </p>
+        <div class="contact-detail">
+          <div class="contact-detail-label">Website</div>
+          <div class="contact-detail-val">taksins.com</div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-detail-label">Group</div>
+          <div class="contact-detail-val">Taksin Syndicate</div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-detail-label">Region</div>
+          <div class="contact-detail-val">Chanthaburi, Thailand</div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-detail-label">Service area</div>
+          <div class="contact-detail-val">Nationwide (all Thailand)</div>
+        </div>
+      </div>
+
+      <div>
+        <form class="contact-form" onsubmit="handleSubmit(event)">
+          <div class="form-group">
+            <label>Your name</label>
+            <input type="text" placeholder="e.g. Somchai Jaidee" required />
+          </div>
+          <div class="form-group">
+            <label>Email address</label>
+            <input type="email" placeholder="you@company.com" required />
+          </div>
+          <div class="form-group">
+            <label>Company / organisation</label>
+            <input type="text" placeholder="Your company name" />
+          </div>
+          <div class="form-group">
+            <label>I'm interested in</label>
+            <select>
+              <option value="">Select a service</option>
+              <option>LPG Cylinder Filling (Taksin LPG)</option>
+              <option>LPG Transportation (RCL)</option>
+              <option>Retail Propane Gas (TPG)</option>
+              <option>B2B Bulk LPG Supply</option>
+              <option>General Enquiry</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Message</label>
+            <textarea placeholder="Tell us about your needs or ask a question..."></textarea>
+          </div>
+          <button type="submit" class="form-submit">Send message →</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">TAKSINS<span class="dot">.</span>COM</div>
+    <div class="footer-nav">
+      <a href="#home">Home</a>
+      <a href="#companies">Companies</a>
+      <a href="#services">Services</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="footer-copy">© 2025 Taksin Syndicate. All rights reserved.</div>
+  </footer>
+
+  <script>
+    function handleSubmit(e) {
+      e.preventDefault();
+      const btn = e.target.querySelector('.form-submit');
+      btn.textContent = 'Message sent ✓';
+      btn.style.background = '#3D9B5C';
+      btn.style.color = '#fff';
+      btn.disabled = true;
+    }
+
+    // smooth nav underline on scroll
+    const sections = document.querySelectorAll('section[id], #home');
+    const navLinks = document.querySelectorAll('.nav-links a');
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(s => {
+        if (window.scrollY >= s.offsetTop - 80) current = s.id;
+      });
+      navLinks.forEach(a => {
+        a.style.color = a.getAttribute('href') === '#' + current ? '#fff' : '';
+      });
+    });
+  </script>
+</body>
+</html>
